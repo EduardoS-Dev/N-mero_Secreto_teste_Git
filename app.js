@@ -3,7 +3,6 @@ let numeroLimite = 10;
 let numeroSecreto = gerarNumeroAletorio();
 let tentativa = 1;
 
-
 function exibirTextoNaTela(tag, texto) {
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
@@ -12,7 +11,7 @@ function exibirTextoNaTela(tag, texto) {
 
 function exibirMensagemInicial() {
     exibirTextoNaTela('h1', 'Olá Maynara, vamos jogar ?');
-    exibirTextoNaTela('p', 'Escolha um número entre 1 e 10');
+    exibirTextoNaTela('p', 'Escolha um número entre 1 e 10. Você possui 3 tentativas!');
 }
 
 exibirMensagemInicial();
@@ -20,20 +19,26 @@ exibirMensagemInicial();
 function verificarChute() {
     let chute = document.querySelector('input').value;
     let palavraTentativa = tentativa > 1 ? 'tentativa' : 'tentativas';
-    let mensagemTentativa = `Você acertou o número secreto com ${tentativa} ${palavraTentativa}`
+    let mensagemTentativa = `Pode escolher o que deseja ganhar`
 
-    if (chute == numeroSecreto) {
-        exibirTextoNaTela('h1', 'Acerto!');
-        exibirTextoNaTela('p', mensagemTentativa);
+    if (tentativa == 3) {
+        exibirTextoNaTela('h1', 'Você perdeu')
+        exibirTextoNaTela('p', `Você utilizou ${tentativa} tentativas`)
         document.getElementById('reiniciar').removeAttribute('disabled');
     } else {
-        if (chute > numeroSecreto) {
-            exibirTextoNaTela('p', 'O número secreto é menor');
+        if (chute == numeroSecreto) {
+            exibirTextoNaTela('h1', 'Você ganhou!');
+            exibirTextoNaTela('p', mensagemTentativa);
+            document.getElementById('reiniciar').removeAttribute('disabled');
         } else {
-            exibirTextoNaTela('p', 'O número secreto é maior');
+            if (chute > numeroSecreto) {
+                exibirTextoNaTela('p', `O número secreto é menor. Você possui mais ${3 - tentativa} ${palavraTentativa}`);
+            } else {
+                exibirTextoNaTela('p', `O número secreto é maior. Você possui mais ${3 - tentativa} ${palavraTentativa}`);
+            }
+            tentativa++;
+            limparCampo();
         }
-        tentativa++;
-        limparCampo();
     }
 }
 
