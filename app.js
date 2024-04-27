@@ -1,5 +1,5 @@
 let listaNumeroSorteados = [];
-let numeroLimite = 10;
+let numeroLimite = 100;
 let numeroSecreto = gerarNumeroAletorio();
 let tentativa = 1;
 
@@ -11,7 +11,7 @@ function exibirTextoNaTela(tag, texto) {
 
 function exibirMensagemInicial() {
     exibirTextoNaTela('h1', 'Olá Maynara, vamos jogar ?');
-    exibirTextoNaTela('p', 'Escolha um número entre 1 e 10. Você possui 3 tentativas!');
+    exibirTextoNaTela('p', 'Escolha um número entre 1 e 100. Você possui 3 tentativas!');
 }
 
 exibirMensagemInicial();
