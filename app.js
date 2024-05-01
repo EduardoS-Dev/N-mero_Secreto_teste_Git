@@ -10,7 +10,7 @@ function exibirTextoNaTela(tag, texto) {
 }
 
 function exibirMensagemInicial() {
-    exibirTextoNaTela('h1', 'Olá Maynara, vamos jogar ?');
+    exibirTextoNaTela('h1', 'Descubra o número secreto ?');
     exibirTextoNaTela('p', 'Escolha um número entre 1 e 20. Você possui 3 tentativas!');
 }
 
@@ -19,7 +19,7 @@ exibirMensagemInicial();
 function verificarChute() {
     let chute = document.querySelector('input').value;
     let palavraTentativa = tentativa > 1 ? 'tentativa' : 'tentativas';
-    let mensagemTentativa = `Pode escolher o que deseja ganhar`
+    let mensagemTentativa = `Você acertou!! Parabéns `
 
     if (tentativa == 3) {
         exibirTextoNaTela('h1', 'Você perdeu')
